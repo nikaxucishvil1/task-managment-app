@@ -6,8 +6,8 @@ import Image from "next/image";
 import React, { useState } from "react";
 import logoDark from "@/public/assets/logo-dark.svg";
 import logoLight from "@/public/assets/logo-light.svg";
-import { isDisable } from "./utils/isDisable";
 import Link from "next/link";
+import { tryLogin, isDisable } from "./utils/common";
 
 const Login = () => {
   const [initialValues] = useState({
@@ -20,18 +20,18 @@ const Login = () => {
         enableReinitialize
         initialValues={initialValues}
         validationSchema={LoginValidationSchema}
-        onSubmit={async (values) => {
-          console.log(values);
+        onSubmit={async (values, { resetForm }) => {
+          tryLogin(values, resetForm);
         }}
       >
-        {({ values, errors, isSubmitting, touched, setFieldValue }) => (
+        {({ errors, isSubmitting, touched }) => (
           <Form
             autoComplete="off"
-            className="w-full h-screen flex p-5 justify-start gap-5 flex-col"
+            className="w-full h-screen flex p-5 justify-start gap-5 flex-col md:flex md:items-center md:justify-center "
           >
             <Image src={logoDark} alt="sum" className="block dark:hidden" />
             <Image src={logoLight} alt="sum" className="hidden dark:block" />
-            <div className="mt-16 flex flex-col gap-3">
+            <div className="mt-16 flex flex-col gap-3 md:mt-10 md:gap-7 md:w-[70%] lg:w-[30%]">
               <div className="flex flex-col gap-2">
                 <h1 className="bold text-[#333333] font-bold text-[24px] md:text-[32px]">
                   Login

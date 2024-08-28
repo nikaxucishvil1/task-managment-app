@@ -1,10 +1,9 @@
 import axios from "axios";
 import Cookies from "js-cookie";
-import { FormikHelpers } from "formik";
 
-const Login = async (
+export const tryLogin = async (
   values: LoginValues,
-  { resetForm }: FormikHelpers<LoginValues>
+  { resetForm }: any
 ) => {
   try {
     const API_KEY = process.env.NEXT_PUBLIC_LOGIN_API as string;

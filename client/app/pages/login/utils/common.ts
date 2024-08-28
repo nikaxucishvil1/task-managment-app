@@ -1,3 +1,4 @@
 import { isDisable } from "./isDisable";
+import { tryLogin } from "./LoginFoo";
 
-export { isDisable };
+export { isDisable, tryLogin };
